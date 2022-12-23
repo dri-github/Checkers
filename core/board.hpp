@@ -84,7 +84,8 @@ public:
 			return false;
 		if (getCheckerByPosition(end_x, end_y) != nullptr ||
 			end_x < 0 || end_x > width - 1 || end_y < 0 || end_y > height - 1 || start_x == end_x || start_y == end_y ||
-			checker->status == Checker::Base && (abs(start_x - end_x) > 1 || abs(start_y - end_y) > 1) || (start_x == end_x && start_y == end_y))
+			checker->status == Checker::Base && (abs(start_x - end_x) > 1 || abs(start_y - end_y) > 1) || (start_x == end_x && start_y == end_y) ||
+			abs(end_x - start_x) != abs(end_y - start_y))
 			return false;
 
 		checker->x = end_x;
@@ -100,7 +101,7 @@ public:
 			return false;
 		if (getCheckerByPosition(start_x + dx, start_y + dy) != NULL || dx == 0 || dy == 0 ||
 			checker->status == Checker::Base && (abs(dx) > 1 || abs(dy) > 1) ||
-			start_x + dx > width - 1 || start_x + dx < 0 || start_y + dy > height - 1 || start_y + dy < 0)
+			start_x + dx > width - 1 || start_x + dx < 0 || start_y + dy > height - 1 || start_y + dy < 0 || abs(dx) != abs(dy))
 			return false;
 
 		checker->x = start_x + dx;
