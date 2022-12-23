@@ -33,6 +33,8 @@ public:
 	void update()
 	{
 		std::cout << "update" << std::endl;
+		unsigned char command;
+		std::cin >> command;
 	}
 	//Отрисовка
 	//Вызываетс после обновления (одиночно вызывается перед запускам основного цикла)
