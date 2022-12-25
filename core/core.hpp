@@ -193,7 +193,14 @@ restart_move:
 							break;
 						}
 					}
-									}
+					else
+					{
+						if ((x + y) % 2 != 0)
+							std::cout << char(0xDB);
+						else
+							std::cout << char(32);//0XB0
+					}
+				}
 			}
 			std::cout << std::endl;
 		}
