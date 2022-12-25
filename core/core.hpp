@@ -21,11 +21,15 @@ public:
 		//Присваиваем различные значения или делаем предварительную подготовку, например:
 		//latter = 'd';
 
-		board = new Board(8, 8);
-		board->addChecker(0, 0, Checker::White);
-		board->addChecker(0, 0, Checker::White);
 		std::cout << "init" << std::endl;
-		
+
+		width = 8;
+		height = 8;
+		board = new Board(width, height);
+		board->addChecker(0, 0, Checker::White);
+		board->addChecker(1, 1, Checker::Black);
+		//board->getCheckerByPosition(1, 1)->status = Checker::Queen;
+
 		return true;
 	}
 	//Обновление
@@ -41,7 +45,52 @@ public:
 	void render()
 	{
 		//Если надо очистить консоль исспользуйте system("cls")
+		system("cls");
+
 		std::cout << "render" << std::endl;
+		std::cout << "   ";
+		for (int x = 0; x < width; x++)
+		{
+			std::cout << x << "  ";
+		}
+		std::cout << std::endl;
+		for (int y = 0; y < height; y++)
+		{
+			std::cout << y << " ";
+			for (int x = 0; x < width; x++)
+			{
+				for (int i = 0; i < 3; i++)
+				{
+					Checker* checker = board->getCheckerByPosition(x, y);
+					if (checker != NULL && i == 1)
+					{
+						switch (checker->side)
+						{
+						case Checker::White:
+							if (checker->status == Checker::Base)
+								std::cout << char(254);
+							else
+								std::cout << char(2);
+							break;
+						case Checker::Black:
+							if (checker->status == Checker::Base)
+								std::cout << char(79);
+							else
+								std::cout << char(1);
+							break;
+						}
+					}
+					else
+					{
+						if ((x + y) % 2 != 0)
+							std::cout << char(0xDB);
+						else
+							std::cout << char(32);//0XB0
+					}
+				}
+			}
+			std::cout << std::endl;
+		}
 	}
 
 	//Открыта ли программа
@@ -55,6 +104,8 @@ private:
 	
 	//Переменные объявляем после этого коментария (если есть необходимость создания переменных доступных по всему коду)
 	//char latter;	//<-- Например
+	int width;
+	int height;
 };
 
 #endif // !CORE_HPP
