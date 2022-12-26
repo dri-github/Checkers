@@ -38,7 +38,7 @@ public:
 	{
 		delete[] checkers;
 	}
-
+	
 	//Добавить шашку на доску, добавление шашки на занятую координату вернёт false
 	bool addChecker(int x, int y, Checker::Side side)
 	{
@@ -87,6 +87,28 @@ public:
 			checker->status == Checker::Base && (abs(start_x - end_x) > 1 || abs(start_y - end_y) > 1) || (start_x == end_x && start_y == end_y) ||
 			abs(end_x - start_x) != abs(end_y - start_y))
 			return false;
+
+		if (checker->status == Checker::Base)
+		{
+			bool isOne = false;
+			for (int i = 0; i < abs(end_x - start_x); i++)
+			{
+				Checker* check_checker = getCheckerByPosition(start_x + i, start_y + i);
+				if (check_checker != NULL)
+				{
+					if (check_checker->side != checker->side)
+					{
+						if (isOne == false)
+						{
+							isOne = true;
+						}
+						else {
+							return false;
+						}
+					}
+				}
+			}
+		}
 
 		checker->x = end_x;
 		checker->y = end_y;
