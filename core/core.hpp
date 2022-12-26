@@ -63,11 +63,17 @@ public:
 		while (true)
 		{
 			system("cls");
-			std::cout << "======================- Checkers -======================" << std::endl;
-			std::cout << "======================-   Menu   -======================" << std::endl;
-			std::cout << "|  s - Start game                                      |" << std::endl;
-			std::cout << "|  q - Quite program                                   |" << std::endl;
-			std::cout << "========================================================" << std::endl;
+			std::cout << "========================================================================" << std::endl;
+			std::cout << "|   _____ _               _                   __  __                   |" << std::endl;
+			std::cout << "|  / ____| |             | |                 |  \\/  |                  |" << std::endl;
+			std::cout << "| | |    | |__   ___  ___| | _____ _ __ ___  | \\  / | ___ _ __  _   _  |" << std::endl;
+			std::cout << "| | |    | '_ \\ / _ \\/ __| |/ / _ \\ '__/ __| | |\\/| |/ _ \\ '_ \\| | | | |" << std::endl;
+			std::cout << "| | |____| | | |  __/ (__|   <  __/ |  \\__ \\ | |  | |  __/ | | | |_| | |" << std::endl;
+			std::cout << "|  \\_____|_| |_|\\___|\\___|_|\\_\\___|_|  |___/ |_|  |_|\\___|_| |_|\\__,_| |" << std::endl;
+			std::cout << "|                                                                      |" << std::endl;
+			std::cout << "|  s - Start game                                                      |" << std::endl;
+			std::cout << "|  q - Quite program                                                   |" << std::endl;
+			std::cout << "=======================================================================" << std::endl;
 
 			unsigned char command;
 			std::cin >> command;
