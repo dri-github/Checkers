@@ -93,7 +93,7 @@ public:
 			bool isOne = false;
 			for (int i = 0; i < abs(end_x - start_x); i++)
 			{
-				Checker* check_checker = getCheckerByPosition(start_x + i, start_y + i);
+				Checker* check_checker = getCheckerByPosition(start_x + i * abs(end_x - start_x) / (end_x - start_x), start_y + i * abs(end_y - start_y) / (end_y - start_y));
 				if (check_checker != NULL)
 				{
 					if (check_checker->side != checker->side)
@@ -133,7 +133,7 @@ public:
 			bool isOne = false;
 			for (int i = 0; i < abs(dx); i++)
 			{
-				Checker* check_checker = getCheckerByPosition(start_x + i, start_y + i);
+				Checker* check_checker = getCheckerByPosition(start_x + i * abs(dx) / dx, start_y + i * abs(dy) / dy);
 				if (check_checker != NULL)
 				{
 					if (check_checker->side != checker->side)
