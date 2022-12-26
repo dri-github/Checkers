@@ -271,6 +271,19 @@ public:
 
 		return command == 'y';
 	}
+	
+	//Провереят можноли ударить в заданную сторону
+	//side_x и side_y могут равняться 1 или -1. Передача других значений приведёт к ошибке в расчетах
+	bool isAtackChecker(int x, int y, int side_x, int side_y)
+	{
+		if (board->getCheckerByPosition(x, y) == nullptr)
+			return false;
+
+		if (board->getCheckerByPosition(x + side_x, y + side_y) == nullptr)
+			return false;
+
+		return board->getCheckerByPosition(x + 2 * side_x, y + 2 * side_y) == nullptr;
+	}
 
 private:
 	Board* board;	//<-- Игровая доска
