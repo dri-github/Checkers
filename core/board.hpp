@@ -108,6 +108,7 @@ public:
 					}
 					else return false;
 				}
+				else isOne = false;
 			}
 		}
 
@@ -147,6 +148,7 @@ public:
 					}
 					else return false;
 				}
+				else isOne = false;
 			}
 		}
 
