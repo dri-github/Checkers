@@ -6,7 +6,7 @@
 #include <iostream> 
 #include <fstream> 
 #include <ctime>
-//прописываем избегание ошибки из-pf localtime
+//ГЇГ°Г®ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЁГ§ГЎГҐГЈГ Г­ГЁГҐ Г®ГёГЁГЎГЄГЁ ГЁГ§-pf localtime
 #pragma warning(disable: 4996)
 
 static std::ofstream* file;
@@ -35,8 +35,8 @@ static void end_loger()
 
 
 //static void loger(const char* text) {
-//    start_loger("loger.txt");
-//    log(text);
+//    start_loger("loger_main.txt");
+//    log("text");
 //    end_loger();
 //}
 #endif //LOGER_HPP
