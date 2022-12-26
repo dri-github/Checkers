@@ -175,6 +175,7 @@ public:
 		else if (command == 'b' || command == 'B') {
 			int commandQuite;
 			
+			unsigned char commandX;
 			unsigned char commandY;
 
 			char x1;
