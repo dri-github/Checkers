@@ -1,6 +1,6 @@
 #ifndef CORE_HPP
 #define CORE_HPP
-
+#include "loger/loger.hpp"
 #include "board.hpp"
 
 //
@@ -14,10 +14,10 @@ public:
 	{
 		delete board;
 	}
-
 	//Инициализация, если прошла удачно должна должна вернуть true
 	bool init()
 	{
+		log("Start init");
 		//Присваиваем различные значения или делаем предварительную подготовку, например:
 		//latter = 'd';
 
@@ -89,13 +89,14 @@ public:
 				break;
 			}
 		}
-
+		log("End init");
 		return true;
 	}
 	//Обновление
 	//Вызывается перед отрисовкой (различные расчеты и функции ввода прописываем в данной функции)
 	void update()
 	{
+		log("Start update");
 		int amount_Black = board->getCountCheckers(Checker::Side::Black);
 		if (amount_Black == 0) {
 			system("cls");
@@ -132,7 +133,7 @@ public:
 			}
 
 		}
-		
+
 		std::cout << "update" << std::endl;
 		unsigned char command;
 		std::cin >> command;
@@ -230,7 +231,7 @@ public:
 			int l = -1;
 			int r = 1;
 		}
-		
+
 		if (side == Checker::Side::Black) {
 			for (int i = 0; i < 8; i++) {
 				Checker* checker = board->getCheckerByPosition(i, 0);
@@ -248,11 +249,13 @@ public:
 			}
 
 		}
+		log("End update");
 	}
 	//Отрисовка
 	//Вызываетс после обновления (одиночно вызывается перед запускам основного цикла)
 	void render()
 	{
+		log("Start render");
 		//Если надо очистить консоль исспользуйте system("cls")
 		system("cls");
 
@@ -300,6 +303,7 @@ public:
 			}
 			std::cout << std::endl;
 		}
+		log("End render");
 	}
 
 	//Открыта ли программа
@@ -332,7 +336,7 @@ public:
 
 		return command == 'y';
 	}
-	
+
 	//Провереят можноли ударить в заданную сторону
 	//side_x и side_y могут равняться 1 или -1. Передача других значений приведёт к ошибке в расчетах
 	bool isAtackChecker(int x, int y, int side_x, int side_y)
