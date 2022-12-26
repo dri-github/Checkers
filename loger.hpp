@@ -6,7 +6,7 @@
 #include <iostream> 
 #include <fstream> 
 #include <ctime>
-//ïðîïèñûâàåì èçáåãàíèå îøèáêè èç-pf localtime
+//prescribe error avoidance due to localtime
 #pragma warning(disable: 4996)
 
 static std::ofstream* file;
