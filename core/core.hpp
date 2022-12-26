@@ -90,6 +90,43 @@ public:
 	//Вызывается перед отрисовкой (различные расчеты и функции ввода прописываем в данной функции)
 	void update()
 	{
+		int amount_Black = board->getCountCheckers(Checker::Side::Black);
+		if (amount_Black == 0) {
+			system("cls");
+
+			std::cout << std::endl;
+			std::cout << " ____  _            _     __          ___       _ " << std::endl;
+			std::cout << "|  _ \\| |          | |    \\ \\        / (_)     | |" << std::endl;
+			std::cout << "| |_) | | __ _  ___| | __  \\ \\  /\\  / / _ _ __ | |" << std::endl;
+			std::cout << "|  _ <| |/ _` |/ __| |/ /   \\ \\/  \\/ / | | '_ \\| |" << std::endl;
+			std::cout << "| |_) | | (_| | (__|   <     \\  /\\  /  | | | | |_|" << std::endl;
+			std::cout << "|____/|_|\\__,_|\\___|_|\\_\\     \\/  \\/   |_|_| |_(_)" << std::endl;
+			std::cout << std::endl;
+			alert("");
+			if (init() == false) {
+				close();
+			}
+
+		}
+
+		int amount_White = board->getCountCheckers(Checker::Side::White);
+		if (amount_White == 0) {
+			system("cls");
+			std::cout << std::endl;
+			std::cout << "__          ___     _ _        __          ___       _ " << std::endl;
+			std::cout << "\\ \\        / / |   (_) |       \\ \\        / (_)     | |" << std::endl;
+			std::cout << " \\ \\  /\\  / /| |__  _| |_ ___   \\ \\  /\\  / / _ _ __ | |" << std::endl;
+			std::cout << "  \\ \\/  \\/ / | '_ \\| | __/ _ \\   \\ \\/  \\/ / | | '_ \\| |" << std::endl;
+			std::cout << "   \\  /\\  /  | | | | | ||  __/    \\  /\\  /  | | | | |_|" << std::endl;
+			std::cout << "    \\/  \\/   |_| |_|_|\\__\\___|     \\/  \\/   |_|_| |_(_)" << std::endl;
+			std::cout << std::endl;
+			alert("presed any key");
+			if (init() == false) {
+				close();
+			}
+
+		}
+		
 		std::cout << "update" << std::endl;
 		unsigned char command;
 		std::cin >> command;
@@ -186,6 +223,24 @@ public:
 
 			int l = -1;
 			int r = 1;
+		}
+		
+		if (side == Checker::Side::Black) {
+			for (int i = 0; i < 8; i++) {
+				Checker* checker = board->getCheckerByPosition(i, 0);
+				if (checker != NULL)
+					checker->status = Checker::Queen;
+			}
+		}
+
+
+		if (side == Checker::White) {
+			for (int i = 0; i < 8; i++) {
+				Checker* checker = board->getCheckerByPosition(i, 7);
+				if (checker != NULL)
+					checker->status = Checker::Queen;
+			}
+
 		}
 	}
 	//Отрисовка
