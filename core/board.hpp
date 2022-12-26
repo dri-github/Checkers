@@ -88,7 +88,7 @@ public:
 			abs(end_x - start_x) != abs(end_y - start_y))
 			return false;
 
-		if (checker->status == Checker::Base)
+		if (checker->status == Checker::Queen)
 		{
 			bool isOne = false;
 			for (int i = 0; i < abs(end_x - start_x); i++)
@@ -128,7 +128,7 @@ public:
 			start_x + dx > width - 1 || start_x + dx < 0 || start_y + dy > height - 1 || start_y + dy < 0 || abs(dx) != abs(dy))
 			return false;
 
-		if (checker->status == Checker::Base)
+		if (checker->status == Checker::Queen)
 		{
 			bool isOne = false;
 			for (int i = 0; i < abs(dx); i++)
