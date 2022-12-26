@@ -30,46 +30,50 @@ public:
 		width = 8;
 		height = 8;
 		board = new Board(width, height);
-		// board->addChecker(0, 0, Checker::White);
-		// board->addChecker(2, 0, Checker::White);
-		// board->addChecker(4, 0, Checker::White);
-		// board->addChecker(6, 0, Checker::White);
-		// board->addChecker(1, 1, Checker::White);
-		// board->addChecker(3, 1, Checker::White);
-		// board->addChecker(5, 1, Checker::White);
-		// board->addChecker(7, 1, Checker::White);
-		// board->addChecker(0, 2, Checker::White);
-		// board->addChecker(2, 2, Checker::White);
-		// board->addChecker(4, 2, Checker::White);
-		// board->addChecker(6, 2, Checker::White);
-		// 
-		// board->addChecker(1, 5, Checker::Black);
-		// board->addChecker(3, 5, Checker::Black);
-		// board->addChecker(5, 5, Checker::Black);
-		// board->addChecker(7, 5, Checker::Black);
-		// board->addChecker(0, 6, Checker::Black);
-		// board->addChecker(2, 6, Checker::Black);
-		// board->addChecker(4, 6, Checker::Black);
-		// board->addChecker(6, 6, Checker::Black);
-		// board->addChecker(1, 7, Checker::Black);
-		// board->addChecker(3, 7, Checker::Black);
-		// board->addChecker(5, 7, Checker::Black);
-		// board->addChecker(7, 7, Checker::Black);
-
-		board->addChecker(2, 2, Checker::Black);
-		board->addChecker(3, 3, Checker::White);
+		 board->addChecker(0, 0, Checker::White);
+		 board->addChecker(2, 0, Checker::White);
+		 board->addChecker(4, 0, Checker::White);
+		 board->addChecker(6, 0, Checker::White);
+		 board->addChecker(1, 1, Checker::White);
+		 board->addChecker(3, 1, Checker::White);
+		 board->addChecker(5, 1, Checker::White);
+		 board->addChecker(7, 1, Checker::White);
+		 board->addChecker(0, 2, Checker::White);
+		 board->addChecker(2, 2, Checker::White);
+		 board->addChecker(4, 2, Checker::White);
+		 board->addChecker(6, 2, Checker::White);
+		 
+		 board->addChecker(1, 5, Checker::Black);
+		 board->addChecker(3, 5, Checker::Black);
+		 board->addChecker(5, 5, Checker::Black);
+		 board->addChecker(7, 5, Checker::Black);
+		 board->addChecker(0, 6, Checker::Black);
+		 board->addChecker(2, 6, Checker::Black);
+		 board->addChecker(4, 6, Checker::Black);
+		 board->addChecker(6, 6, Checker::Black);
+		 board->addChecker(1, 7, Checker::Black);
+		 board->addChecker(3, 7, Checker::Black);
+		 board->addChecker(5, 7, Checker::Black);
+		 board->addChecker(7, 7, Checker::Black);
 
 		//board->getCheckerByPosition(1, 1)->status = Checker::Queen;
+
+
 
 		while (true)
 		{
 			system("cls");
-			std::cout << "======================- Checkers -======================" << std::endl;
-			std::cout << "======================-   Menu   -======================" << std::endl;
-			std::cout << "|  s - Start game                                      |" << std::endl;
-			std::cout << "|  q - Quite program                                   |" << std::endl;
-		//  std::cout << "|  h - Help                                            |" << std::endl;
-			std::cout << "========================================================" << std::endl;
+			std::cout << "=======================================================================" << std::endl;
+			std::cout << "|   _____ _               _                   __  __                   |" << std::endl;
+			std::cout << "|  / ____| |             | |                 |  \\/  |                  |" << std::endl;
+			std::cout << "| | |    | |__   ___  ___| | _____ _ __ ___  | \\  / | ___ _ __  _   _  |" << std::endl;
+			std::cout << "| | |    | '_ \\ / _ \\/ __| |/ / _ \\ '__/ __| | |\\/| |/ _ \\ '_ \\| | | | |" << std::endl;
+			std::cout << "| | |____| | | |  __/ (__|   <  __/ |  \\__ \\ | |  | |  __/ | | | |_| | |" << std::endl;
+			std::cout << "|  \\_____|_| |_|\\___|\\___|_|\\_\\___|_|  |___/ |_|  |_|\\___|_| |_|\\__,_| |" << std::endl;
+			std::cout << "|                                                                      |" << std::endl;
+			std::cout << "|  s - Start game                                                      |" << std::endl;
+			std::cout << "|  q - Quite program                                                   |" << std::endl;
+			std::cout << "=======================================================================" << std::endl;
 
 			unsigned char command;
 			std::cin >> command;
@@ -78,34 +82,82 @@ public:
 			case 's':
 				return true;
 			case 'q':
-				std::cout << "Goodbye <3" << std::endl;
+				std::cout << "Goodbye" << std::endl;
 				Sleep(1000);
 				return false;
-		//	case 'h':
 			default:
 				std::cout << "Not have message" << std::endl;
 				alert("Pressed eny key");
 				break;
 			}
 		}
-
 		return true;
 	}
 	//Обновление
 	//Вызывается перед отрисовкой (различные расчеты и функции ввода прописываем в данной функции)
 	void update()
 	{
+
+		int amount_White = board->getCountCheckers(Checker::Side::White);
+		if (amount_White == 0) {
+			system("cls");
+
+			std::cout << std::endl;
+			std::cout << " ____  _            _     __          ___       _ " << std::endl;
+			std::cout << "|  _ \\| |          | |    \\ \\        / (_)     | |" << std::endl;
+			std::cout << "| |_) | | __ _  ___| | __  \\ \\  /\\  / / _ _ __ | |" << std::endl;
+			std::cout << "|  _ <| |/ _` |/ __| |/ /   \\ \\/  \\/ / | | '_ \\| |" << std::endl;
+			std::cout << "| |_) | | (_| | (__|   <     \\  /\\  /  | | | | |_|" << std::endl;
+			std::cout << "|____/|_|\\__,_|\\___|_|\\_\\     \\/  \\/   |_|_| |_(_)" << std::endl;
+			std::cout << std::endl;
+			alert("");
+			if (init() == false) {
+				close();
+			}
+
+		}
+
+		int amount_Black = board->getCountCheckers(Checker::Side::Black);
+		if (amount_Black == 0) {
+			system("cls");
+			std::cout << std::endl;
+			std::cout << "__          ___     _ _        __          ___       _ " << std::endl;
+			std::cout << "\\ \\        / / |   (_) |       \\ \\        / (_)     | |" << std::endl;
+			std::cout << " \\ \\  /\\  / /| |__  _| |_ ___   \\ \\  /\\  / / _ _ __ | |" << std::endl;
+			std::cout << "  \\ \\/  \\/ / | '_ \\| | __/ _ \\   \\ \\/  \\/ / | | '_ \\| |" << std::endl;
+			std::cout << "   \\  /\\  /  | | | | | ||  __/    \\  /\\  /  | | | | |_|" << std::endl;
+			std::cout << "    \\/  \\/   |_| |_|_|\\__\\___|     \\/  \\/   |_|_| |_(_)" << std::endl;
+			std::cout << std::endl;
+			alert("presed any key");
+			if (init() == false) {
+				close();
+			}
+
+		}
+
+	restart_move:
+			if (side == Checker::White) {
+				side = Checker::Black;
+				std::cout << std::endl << " ----- BLACK -----" << std::endl;
+			}
+			else {
+				side = Checker::White;
+				std::cout << std::endl << " ----- WHITE -----" << std::endl;
+			}
 		std::cout << " " << std::endl;
 		std::cout << " m - Move" << std::endl;
-		std::cout << " b - Beat" << std::endl;
 		std::cout << " q - Quit to the menu" << std::endl;
 		unsigned char command;
+		std::cout << " ";
 		std::cin >> command;
 		if (command == 'q' || command == 'Q') {
-			if (confirm("Do you wont leave?") == true)
+			if (confirm(" Do you wont leave?") == true) {
 				if (init() == false) {
 					close();
 				}
+			}
+			else
+				goto restart_move;
 		}
 		else if (command == 'm' || command == 'M')
 		{
@@ -120,150 +172,91 @@ public:
 			int l = -1;
 			int r = 1;
 
-			if (side == Checker::White) {
-				side = Checker::Black;
-				std::cout << " -----> BLACK " << std::endl;
-			}
-			else {
-				side = Checker::White;
-				std::cout << " -----> WHITE " << std::endl;
-			}
 
-		restart_move:
-			//Ввод координат шашки и проверка на корректность введённых данных
-			std::cout << "Coords:" << std::endl;
-			std::cin >> y1 >> x1;
-			y1 = y1 - '0';
-			x1 = x1 - '0';
-			if (!(x1 >= 0 && x1 <= 7 && y1 >= 0 && y1 <= 7))
-				goto restart_move;
-			//Куда ходить шашке, налево или направо?
-			std::cout << "Left(l) or Right(r)?" << std::endl;
-			std::cin >> commandX;
-			if (commandX == 'l' || commandX == 'L')
-				x2 = l;
-			else if (commandX == 'r' || commandX == 'R')
-				x2 = r;
-
-			Checker* checker = board->getCheckerByPosition(x1, y1);
-			switch (side)
-			{
-			case Checker::White:
-				if (checker != 0 && checker->side == Checker::White)
-				{
-					if (board->moveDeltaChecker(x1, y1, x2, 1) == false)
-						goto restart_move;
-				}
-				else {
-					goto restart_move;
-				}
-				break;
-			case Checker::Black:
-				if (checker != 0 && checker->side == Checker::Black)
-				{
-					if (board->moveDeltaChecker(x1, y1, x2, -1) == false)
-						goto restart_move;
-				}
-				else {
-					goto restart_move;
-				}
-				break;
-			default:
-				break;
-			}
-		}
-		else if (command == 'b' || command == 'B') {
-			int commandQuite;
-			
-			unsigned char commandX;
-			unsigned char commandY;
-
-			char x1;
-			char y1;
-			int x2;
-			int y2;
-
-			int l = -1;
-			int r = 1;
-			int t = -1;
-			int b = 1;
-			
-			////////////////////////////////////////////////////
-			if (side == Checker::White) {
-				side = Checker::Black;
-				std::cout << " -----> BLACK " << std::endl;
-			}
-			else {
-				side = Checker::White;
-				std::cout << " -----> WHITE " << std::endl;
-			}
-			////////////////////////////////////////////////////
-		restart_move_beat:
 			//Ввод координат шашки и проверка на корректность введённых данных
 			std::cout << " Coords:" << std::endl;
 			std::cin >> y1 >> x1;
 			y1 = y1 - '0';
 			x1 = x1 - '0';
 			if (!(x1 >= 0 && x1 <= 7 && y1 >= 0 && y1 <= 7))
-				goto restart_move_beat;
+				goto restart_move;
+			//Куда ходить шашке, налево или направо
+			// откат действия, если нет пешек, которые можно бить
 
-
-			std::cout << " Left(l) or Right(r)?" << std::endl;
+			std::cout << " Left(l) or Right(r)?" << std::endl << " ";
 			std::cin >> commandX;
 			if (commandX == 'l' || commandX == 'L')
 				x2 = l;
 			else if (commandX == 'r' || commandX == 'R')
 				x2 = r;
 
-			std::cout << "Top(t) or Bottom(b)?" << std::endl;
-			std::cin >> commandY;
-			if (commandY == 't' || commandY == 'T')
-				y2 = t;
-			else if (commandY == 'b' || commandY == 'B')
-				y2 = b;
+			if (isAtackChecker(x1, y1, l, -1) == true ||
+				isAtackChecker(x1, y1, l, 1) == true||
+				isAtackChecker(x1, y1, r, -1) == true || 
+				isAtackChecker(x1, y1, r, 1) == true) {
+				std::cout << " Top(t) or Bottom(b)?" << std::endl;
+				std::cin >> commandY;
+				if (commandY == 't' || commandY == 'T')
+					y2 = -1;
+				else if (commandY == 'b' || commandY == 'B')
+					y2 = 1;
 
-
-			if (isAtackChecker(x1, y1, x2, y2) == true) {
-				board->deleteChecker(x1 + x2, y1 + y2);
-				board->moveDeltaChecker(x1, y1, x2, y2);
-				x1 = x1 + x2;
-				y1 = y1 + y2;
-				board->moveDeltaChecker(x1, y1, x2, y2);
+				if (isAtackChecker(x1, y1, x2, y2) == true) {
+					board->deleteChecker(x1 + x2, y1 + y2);
+					board->moveDeltaChecker(x1, y1, x2, y2);
+					x1 = x1 + x2;
+					y1 = y1 + y2;
+					board->moveDeltaChecker(x1, y1, x2, y2);
+				}
+			} else {
+				Checker* checker = board->getCheckerByPosition(x1, y1);
+				switch (side)
+				{
+				case Checker::White:
+					if (checker != 0 && checker->side == Checker::White)
+					{
+						if (board->moveDeltaChecker(x1, y1, x2, 1) == false)
+							goto restart_move;
+					}
+					else {
+						goto restart_move;
+					}
+					break;
+				case Checker::Black:
+					if (checker != 0 && checker->side == Checker::Black)
+					{
+						if (board->moveDeltaChecker(x1, y1, x2, -1) == false)
+							goto restart_move;
+					}
+					else {
+						goto restart_move;
+					}
+					break;
+				default:
+					break;
+				}
 			}
-
-			
-
-
-
-		/*	Checker* checker = board->getCheckerByPosition(x1, y1);
-			switch (side)
-			{
-			case Checker::White:
-				if (checker != 0 && checker->side == Checker::White)
-				{
-					if (board->moveDeltaChecker(x1, y1, x2, 1) == false)
-						goto restart_move_beat;
-				}
-				else {
-					goto restart_move_beat;
-				}
-				break;
-			case Checker::Black:
-				if (checker != 0 && checker->side == Checker::Black)
-				{
-					if (board->moveDeltaChecker(x1, y1, x2, -1) == false)
-						goto restart_move_beat;
-				}
-				else {
-					goto restart_move_beat;
-				}
-				break;
-			default:
-				break;
-			}*/
-
 		}
 		
+
+		if (side == Checker::Side::Black) {
+			for (int i = 0; i < 8; i++) {
+				Checker* checker = board->getCheckerByPosition(i, 0);
+				if (checker != NULL)
+					checker->status = Checker::Queen;
+			}
+		}
+
+
+		if (side == Checker::White) {
+			for (int i = 0; i < 8; i++) {
+				Checker* checker = board->getCheckerByPosition(i, 7);
+				if (checker != NULL)
+					checker->status = Checker::Queen;
+			}
+
+		}
+
 	}
 	//Отрисовка
 	//Вызываетс после обновления (одиночно вызывается перед запускам основного цикла)
@@ -272,7 +265,6 @@ public:
 		//Если надо очистить консоль исспользуйте system("cls")
 		system("cls");
 		 
-		std::cout << "render" << std::endl;
 		std::cout << "   ";
 		for (int x = 0; x < width; x++)
 		{
@@ -333,7 +325,7 @@ public:
 	char* prompt(const char* text, int size)
 	{
 		std::cout << text << std::endl;
-		std::cout << "Yes(y) or Not(n)" << std::endl;
+		std::cout << " Yes(y) or Not(n)" << std::endl;
 		char* command = new char[size];
 		std::cin >> command;
 		
@@ -342,7 +334,7 @@ public:
 	bool confirm(const char* text)
 	{
 		std::cout << text << std::endl;
-		std::cout << "Yes(y) or Not(n)" << std::endl;
+		std::cout << " Yes(y) or Not(n)" << std::endl;
 		unsigned char command;
 		std::cin >> command;
 
