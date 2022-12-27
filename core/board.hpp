@@ -85,17 +85,21 @@ public:
 		if (getCheckerByPosition(end_x, end_y) != nullptr ||
 			end_x < 0 || end_x > width - 1 || end_y < 0 || end_y > height - 1 || start_x == end_x || start_y == end_y ||
 			checker->status == Checker::Base && (abs(start_x - end_x) > 1 || abs(start_y - end_y) > 1) || (start_x == end_x && start_y == end_y) ||
-			abs(end_x - start_x) != abs(end_y - start_y))
+			checker->status == Checker::Base && abs(end_x - start_x) != abs(end_y - start_y))
+			return false;
+
+		if (checker->status == Checker::Queen && abs(end_x - start_x) != abs(end_y - start_y))
 			return false;
 
 		if (checker->status == Checker::Queen)
 		{
 			bool isOne = false;
-			for (int i = 0; i < abs(end_x - start_x); i++)
+			for (int i = 1; i < abs(end_x - start_x); i++)
 			{
 				Checker* check_checker = getCheckerByPosition(start_x + i * abs(end_x - start_x) / (end_x - start_x), start_y + i * abs(end_y - start_y) / (end_y - start_y));
 				if (check_checker != NULL)
 				{
+					std::cout << i << std::endl;
 					if (check_checker->side != checker->side)
 					{
 						if (isOne == false)
@@ -125,7 +129,10 @@ public:
 			return false;
 		if (getCheckerByPosition(start_x + dx, start_y + dy) != NULL || dx == 0 || dy == 0 ||
 			checker->status == Checker::Base && (abs(dx) > 1 || abs(dy) > 1) ||
-			start_x + dx > width - 1 || start_x + dx < 0 || start_y + dy > height - 1 || start_y + dy < 0 || abs(dx) != abs(dy))
+			start_x + dx > width - 1 || start_x + dx < 0 || start_y + dy > height - 1 || start_y + dy < 0 || checker->status == Checker::Base && abs(dx) != abs(dy))
+			return false;
+
+		if (checker->status == Checker::Queen && abs(dx) != abs(dy))
 			return false;
 
 		if (checker->status == Checker::Queen)
