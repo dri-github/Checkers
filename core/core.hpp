@@ -160,7 +160,11 @@ public:
 		unsigned char command;
 		std::cout << " ";
 		std::cin >> command;
-		log("Game play command: " + command);
+		log("Game play command:");
+		char* com = new char[2];
+		com[0] = command;
+		com[1] = '\0';
+		log(com);
 		switch (command)
 		{
 		case 'q':
